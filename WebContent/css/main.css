@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+body {
+	
+}
+
+.container {
+	width: 100%;
+	min-height: 320px;
+	padding: 0px;
+	margin-top:50px;
+}
+
+.title {
+	text-align: center;
+}
+
+#btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#btns button {
+	width: 100px;
+	margin: 10px 0px;
+}
+
+.content {
+	margin-left:50px;
+}
+
+.result-content{
+	text-align: center;
+}
+
+.result-content ul li {
+	margin: 10px 10px;
+}
+
+.result-content ul li img {
+	width: 150px;
+	height: 150px;
+}
+
+main .description h3 {
+	font-size: 20px;
+}

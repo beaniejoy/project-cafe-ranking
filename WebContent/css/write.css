@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+
+.star{
+  display:inline-block;
+  width: 30px;height: 60px;
+  cursor: pointer;
+}
+.star_left{
+  background: url(/cafe/image/star.png) no-repeat 0 0; 
+  background-size: 60px; 
+  margin-right: -3px;
+}
+.star_right{
+  background: url(/cafe/image/star.png) no-repeat -30px 0; 
+  background-size: 60px; 
+  margin-left: -3px;
+}
+.star.on{
+  background-image: url(/cafe/image/star_on.png);
+}
