@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="kr.co.acorn.dao.DeptDao"%>
 <%@ page pageEncoding="utf-8"%>
-<%@ include file="../inc/header.jsp"%>
+<%@ include file="inc/header.jsp"%>
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -162,5 +162,5 @@
 </div>
 <!-- main end -->
 
-<%@ include file="../inc/footer.jsp" %>
+<%@ include file="inc/footer.jsp" %>
 
