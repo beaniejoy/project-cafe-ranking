@@ -1,3 +1,4 @@
+<%@page import="dao.ShopRatingDao"%>
 <%@page import="dto.ShopInfoDto"%>
 <%@page import="dao.ShopInfoDao"%>
 <%@ page import="java.util.ArrayList"%>
@@ -28,9 +29,9 @@
 	} catch (NumberFormatException e) {
 		cPage = 1;
 	}
-
+	// 카페 정보를 담고있는 table dao
 	ShopInfoDao dao = ShopInfoDao.getInstance();
-
+	ShopRatingDao ratingDao = ShopRatingDao.getInstance();
 	if (keyword == null || keyword.length() == 0) {
 		totalRows = dao.getTotalRows();
 	} else {
@@ -94,8 +95,11 @@
 							<p class="card-text"></p>
 						</div>
 						<div class="card-body">
-							<a href="#" class="card-link">평가하기</a>
-							<a href="#" class="card-link">수정하기</a>
+							<% if (mdto != null && ratingDao.isAlreadyRated(infoDto.getSname(), mdto.getId())) {%>
+							<a href="update.jsp?shop=<%=infoDto.getSname() %>" class="card-link">수정하기</a>
+							<%} else {%>
+							<a href="writeProcess.jsp?shop=<%=infoDto.getSname() %>" class="card-link">평가하기</a>
+							<%} %>
 						</div>
 					</div>
 				</div>

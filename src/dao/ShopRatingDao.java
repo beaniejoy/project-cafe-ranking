@@ -351,4 +351,47 @@ public class ShopRatingDao {
 		
 		return dto;
 	}
+	
+	public boolean isAlreadyRated(String shopName, String id) {
+		boolean isSuccess = false;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ConnLocator.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT id ");
+			sql.append("FROM ");
+			sql.append(shopName);
+			sql.append(" WHERE id = ? ");
+
+			pstmt = con.prepareStatement(sql.toString());
+			int index = 0;
+			pstmt.setString(++index, id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				isSuccess = true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return isSuccess;
+	}
 }

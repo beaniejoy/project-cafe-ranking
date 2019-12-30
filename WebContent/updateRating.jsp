@@ -15,13 +15,14 @@
 	double priceRate = Double.parseDouble(request.getParameter("priceRate"));
 	double tasteRate = Double.parseDouble(request.getParameter("tasteRate"));
 	
+	// 0부터 index 시작해서 ++
 	moodRate = ++moodRate / (double)2;
 	lightRate = ++lightRate / (double)2;
 	priceRate = ++priceRate / (double)2;
 	tasteRate = ++tasteRate / (double)2;
 	
 	String comm = request.getParameter("cmm");
-
+	
 	ShopRatingDto dto = new ShopRatingDto(id, moodRate, lightRate, priceRate, tasteRate, comm);
 	ShopRatingDao dao = ShopRatingDao.getInstance();
 	TotalRateDao totalDao = TotalRateDao.getInstance();

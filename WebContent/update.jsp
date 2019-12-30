@@ -24,8 +24,8 @@
 	}
 	
 	ShopRatingDao dao = ShopRatingDao.getInstance();
-	// write페이지에 직접 접근할시 돌려보냄 
-	if (mdto == null || dao.isAlreadyRated(shopName, mdto.getId())) {
+	// update페이지에 직접 접근할시 돌려보냄 
+	if (mdto == null || dao.isAlreadyRated(shopName, mdto.getId()) == false) {
 		response.sendRedirect(contextPath + "/main.jsp");
 		return;
 	}
@@ -40,6 +40,7 @@
 		cPage = 1;
 	}
 	
+	ShopRatingDto dto = dao.select(shopName, mdto.getId());
 %>
 
 <!-- main start -->
@@ -67,35 +68,51 @@
 				
 				<h4>분위기</h4>
 				<div class="star-box">
-					<span class="star star_left mood"></span> <span class="star star_right mood"></span>
-					<span class="star star_left mood"></span> <span class="star star_right mood"></span>
-					<span class="star star_left mood"></span> <span class="star star_right mood"></span>
-					<span class="star star_left mood"></span> <span class="star star_right mood"></span>
-					<span class="star star_left mood"></span> <span class="star star_right mood"></span>
+					<%	int mood = (int)(dto.getMood() * 2);
+						for(int i = 1; i <= 10; i++ ){
+							if(i % 2 == 1){
+					%>
+					<span class="star star_left mood <%if(i <= mood){%>on<%}%>"></span>
+					<%} else{%> 
+					<span class="star star_right mood <%if(i <= mood){%>on<%}%>"></span>
+					<%} %>
+					<%} %>
 				</div>
 				<h4>조명</h4>
 				<div class="star-box">
-					<span class="star star_left light"></span> <span class="star star_right light"></span>
-					<span class="star star_left light"></span> <span class="star star_right light"></span>
-					<span class="star star_left light"></span> <span class="star star_right light"></span>
-					<span class="star star_left light"></span> <span class="star star_right light"></span>
-					<span class="star star_left light"></span> <span class="star star_right light"></span>
+					<%	int light = (int)(dto.getLight() * 2);
+						for(int i = 1; i <= 10; i++ ){
+							if(i % 2 == 1){
+					%>
+					<span class="star star_left light <%if(i <= light){%>on<%}%>"></span>
+					<%} else{%> 
+					<span class="star star_right light <%if(i <= light){%>on<%}%>"></span>
+					<%} %>
+					<%} %>
 				</div>
 				<h4>가격</h4>
 				<div class="star-box">
-					<span class="star star_left price"></span> <span class="star star_right price"></span>
-					<span class="star star_left price"></span> <span class="star star_right price"></span>
-					<span class="star star_left price"></span> <span class="star star_right price"></span>
-					<span class="star star_left price"></span> <span class="star star_right price"></span>
-					<span class="star star_left price"></span> <span class="star star_right price"></span>
+					<%	int price = (int)(dto.getPrice() * 2);
+						for(int i = 1; i <= 10; i++ ){
+							if(i % 2 == 1){
+					%>
+					<span class="star star_left price <%if(i <= price){%>on<%}%>"></span>
+					<%} else{%> 
+					<span class="star star_right price <%if(i <= price){%>on<%}%>"></span>
+					<%} %>
+					<%} %>
 				</div>
 				<h4>맛</h4>
 				<div class="star-box">
-					<span class="star star_left taste"></span> <span class="star star_right taste"></span>
-					<span class="star star_left taste"></span> <span class="star star_right taste"></span>
-					<span class="star star_left taste"></span> <span class="star star_right taste"></span>
-					<span class="star star_left taste"></span> <span class="star star_right taste"></span>
-					<span class="star star_left taste"></span> <span class="star star_right taste"></span>
+					<%	int taste = (int)(dto.getTaste() * 2);
+						for(int i = 1; i <= 10; i++ ){
+							if(i % 2 == 1){
+					%>
+					<span class="star star_left taste <%if(i <= taste){%>on<%}%>"></span>
+					<%} else{%> 
+					<span class="star star_right taste <%if(i <= taste){%>on<%}%>"></span>
+					<%} %>
+					<%} %>
 				</div>
 
 				<br>
@@ -165,7 +182,7 @@
 
 				<div class="form-group">
 					<label for="cmm">한줄 평가</label>
-					<textarea class="form-control" id="cmm" name="cmm" rows="3"></textarea>
+					<textarea class="form-control" id="cmm" name="cmm" rows="3"><%=dto.getComm()%></textarea>
 				</div>
 				<input type="hidden" name="moodRate" id="moodRate" value="" />
 				<input type="hidden" name="lightRate" id="lightRate" value="" />
@@ -174,9 +191,9 @@
 			</form>
 			<br>
 			<div class='text-right'>
-				<a href='list.jsp?page=<%=cPage%>' type="button"
+				<a href='<%=contextPath %>/search.jsp?page=<%=cPage%>' type="button"
 					class="btn btn-secondary btn-md">취소</a>
-				<button type="button" id='saveCafe' class="btn btn-primary btn-md">등록</button>
+				<button type="button" id='updateCafe' class="btn btn-primary btn-md">등록</button>
 			</div>
 
 
@@ -196,8 +213,8 @@
 			$(this).addClass('on').prevAll('span').addClass('on');
 			return false;
 		});
-		$("#saveCafe").click(function() {
-			f.action = "saveRating.jsp"
+		$("#updateCafe").click(function() {
+			f.action = "updateRating.jsp"
 			f.submit();
 		});
 
@@ -213,7 +230,6 @@
 		
 		$(".light").on('click', function() {
 			var idx = $(this).index();
-			console.log(idx);
 			$("#lightRate").val(idx);
 			$(".light").removeClass("on");
 			for (var i = 0; i <= idx; i++) {

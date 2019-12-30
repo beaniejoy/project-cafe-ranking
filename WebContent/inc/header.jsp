@@ -71,15 +71,14 @@
 						환영합니다.</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=contextPath%>/mem/logout.jsp">로그아웃 </a></li>
+				
+				<%
+					}
+				%>
 				<form class="form-inline my-2 my-lg-0" method="post" action="<%=contextPath%>/search.jsp">
 					<input class="form-control mr-sm-2" type="text" placeholder="카페명을 입력해주세요" id = "search" name = "search" aria-label="Search">
 					<button class="btn btn-secondary my-2 my-sm-0" type="submit">카페찾기</button>
 				</form>
-
-				<%
-					}
-				%>
-
 			</ul>
 		</div>
 	</nav>
