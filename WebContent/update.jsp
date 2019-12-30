@@ -184,10 +184,10 @@
 					<label for="cmm">한줄 평가</label>
 					<textarea class="form-control" id="cmm" name="cmm" rows="3"><%=dto.getComm()%></textarea>
 				</div>
-				<input type="hidden" name="moodRate" id="moodRate" value="" />
-				<input type="hidden" name="lightRate" id="lightRate" value="" />
-				<input type="hidden" name="priceRate" id="priceRate" value="" />
-				<input type="hidden" name="tasteRate" id="tasteRate" value="" />
+				<input type="hidden" name="moodRate" id="moodRate" value="<%=mood-1 %>" />
+				<input type="hidden" name="lightRate" id="lightRate" value="<%=light-1 %>" />
+				<input type="hidden" name="priceRate" id="priceRate" value="<%=price-1 %>" />
+				<input type="hidden" name="tasteRate" id="tasteRate" value="<%=taste-1 %>" />
 			</form>
 			<br>
 			<div class='text-right'>
@@ -221,6 +221,7 @@
 		
 		$(".mood").on('click', function() {
 			var idx = $(this).index();
+			console.log(idx);
 			$("#moodRate").val(idx);
 			$(".mood").removeClass("on");
 			for (var i = 0; i <= idx; i++) {
@@ -230,6 +231,7 @@
 		
 		$(".light").on('click', function() {
 			var idx = $(this).index();
+			console.log(idx);
 			$("#lightRate").val(idx);
 			$(".light").removeClass("on");
 			for (var i = 0; i <= idx; i++) {

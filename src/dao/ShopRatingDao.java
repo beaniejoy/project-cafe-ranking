@@ -280,6 +280,7 @@ public class ShopRatingDao {
 			pstmt.setDouble(++index, dto.getPrice());
 			pstmt.setDouble(++index, dto.getTaste());
 			pstmt.setString(++index, dto.getComm());
+			pstmt.setString(++index, id);
 			
 			pstmt.executeUpdate();
 			
