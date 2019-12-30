@@ -10,8 +10,7 @@
 
 
 <%
-	/*  String sname = request.getParameter("sname"); */
-	String sname = "스타벅스_을지로점";
+	String sname = request.getParameter("shop");
 
 	ShopRatingDao shopRatingDao = ShopRatingDao.getInstance();
 	ArrayList<ShopRatingDto> list = shopRatingDao.select(sname);

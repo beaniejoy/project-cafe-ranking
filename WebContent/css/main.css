@@ -46,3 +46,8 @@ body {
 main .description h3 {
 	font-size: 20px;
 }
+
+.card img{
+	width: 150px;
+	height: 150px;
+}
