@@ -24,6 +24,46 @@ public class ShopRatingDao {
 		return single;
 	}
 	
+	public boolean isTable(String shopName) {
+		boolean isSuccess = false;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ConnLocator.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT 1 FROM Information_schema.tables ");
+			sql.append("WHERE table_schema = 'hb' ");
+			sql.append("AND table_name = ? ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			int index = 0;
+			pstmt.setString(++index, shopName);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				isSuccess = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return isSuccess;
+	}
 	public boolean isShopName(String shopName) {
 		boolean isThere = false;
 		

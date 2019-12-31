@@ -12,13 +12,22 @@ memdto = memdao.getMember(memdto);
 if(memdto != null){
 	session.setMaxInactiveInterval(60*60*24);
 	session.setAttribute("member", memdto);
-	%>
-	<script>
-	alert('로그인 성공');
-	location.href="<%=request.getContextPath()%>/main.jsp";
-	</script>
-	<%
-	
+	String shopName = request.getParameter("shop");
+	if(shopName == null || shopName.length() == 0){
+		%>
+		<script>
+		alert('로그인 성공');
+		location.href="<%=request.getContextPath()%>/main.jsp";
+		</script>
+		<%
+	} else {
+		%>
+		<script>
+		alert('로그인 성공');
+		location.href="<%=request.getContextPath()%>/writeProcess.jsp?shop=<%=shopName%>";
+		</script>
+		<%
+	}
 }else{
 	%>
 	<script>

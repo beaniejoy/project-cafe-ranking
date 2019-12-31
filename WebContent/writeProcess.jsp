@@ -12,7 +12,7 @@
 		%>
 		<script>
 			alert("카공도르 회원만 이용할 수 있습니다. 로그인 페이지로 돌아갑니다.");
-			location.href = "<%=contextPath%>/mem/login.jsp";
+			location.href = "<%=contextPath%>/mem/login.jsp?shop=<%=shopName%>";
 		</script>
 		<%
 	} else if(dao.isAlreadyRated(shopName, mDto.getId()) == false){

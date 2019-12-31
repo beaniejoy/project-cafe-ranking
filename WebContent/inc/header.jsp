@@ -19,6 +19,8 @@
 
 <link rel="stylesheet" href="/cafe/css/main.css">
 <link rel="stylesheet" href="/cafe/css/write.css">
+<!-- 합쳐지고 최소화된 최신 CSS -->
+
 <title>카공도르</title>
 </head>
 

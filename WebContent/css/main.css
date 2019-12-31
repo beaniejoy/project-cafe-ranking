@@ -5,8 +5,9 @@ body {
 }
 
 .container {
-	width: 100%;
-	min-height: 320px;
+	min-width: 1000px;
+	margin: 0 auto;
+	min-height: 500px;
 	padding: 0px;
 	margin-top:50px;
 }

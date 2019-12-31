@@ -31,8 +31,7 @@
 								for (int i = 0; i < 5; i++) {
 							%>
 							<div class="card">
-								<img src="..." class="card-img-top" id="shop-img<%=i%>"
-									alt="...">
+								<img class="card-img-top" id="shop-img<%=i%>">
 								<div class="card-body">
 									<h6 class="card-title" id="shop<%=i%>"></h6>
 									<p class="card-text" id="rate-no<%=i%>"></p>

@@ -21,189 +21,82 @@
 	TotalRateDao totalDao = TotalRateDao.getInstance();
 	TotalRateDto totalDto = totalDao.select(sname);
 %>
-<style>
-img {
-	display: block;
-	margin: 0px auto;
-}
 
-textarea {
-	display: block;
-	margin: 0px auto;
-}
-</style>
-
-<nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="#">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Library</li>
-	</ol>
-</nav>
-
-<div class="card bg-dark text-white">
-	<img src="../image/cafe.jpg" style="width: 1200px; height: 700px;"
-		class="card-img" alt="...">
-	<div class="card-img-overlay">
-		<h5 class="card-title">Card title</h5>
-		<p class="card-text">This is a wider card with supporting text
-			below as a natural lead-in to additional content. This content is a
-			little bit longer.</p>
-		<p class="card-text">Last updated 3 mins ago</p>
-	</div>
+<div class="jumbotron">
+	<h2 style="margin-bottom: 50px;"><%=infoDto.getSname()%></h2>
+	<p class="lead"></p>
+	<p></p>
+	
 </div>
+<div class="container">
+	<div style="margin-bottom: 50px">
+		<ul class="list-group">
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Location</b></span><%=infoDto.getLoc()%></li>
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Tel.</b></span><%=infoDto.getPhone()%></li>
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Time</b></span><%=infoDto.getOperTime()%></li>
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Menu</b></span><%=infoDto.getMenu()%></li>
+		</ul>
+	</div>
+	<div style="margin-bottom: 50px">
+		<ul class="list-group">
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Mood</b></span><%=totalDto.getMood()%></li>
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Light</b></span><%=totalDto.getLight()%></li>
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Price</b></span><%=totalDto.getPrice()%></li>
+			<li class="list-group-item"><span
+				style="width: 100px; display: inline-block; margin-right: 20px"><b>Taste</b></span><%=totalDto.getTaste()%></li>
+		</ul>
+	</div>
 
-<table class="table table-borderless">
-	<colgroup>
-		<col width="10%" />
-		<col width="10%" />
-		<col width="10%" />
-		<col width="10%" />
-
-	</colgroup>
-	<thead>
+	<div class="text-right">
+		<a href="<%=contextPath %>/main.jsp" type="button" class="btn btn-outline-secondary">메인</a>
 		<%
-			if (infoDto != null) {
+			if (mdto != null && shopRatingDao.isAlreadyRated(infoDto.getSname(), mdto.getId())) {
 		%>
-
-		<tr>
-			<th scope="col"><h2>
-					<%=infoDto.getSname()%></h2></th>
-			<td></td>
-		</tr>
-		<tr>
-			<th scope="col">opertime</th>
-			<td><%=infoDto.getOperTime()%></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<th scope="col">location</th>
-			<td><%=infoDto.getLoc()%></td>
-		</tr>
-		<tr>
-			<th scope="col">phone</th>
-			<td><%=infoDto.getPhone()%></td>
-		</tr>
+		<a href="update.jsp?shop=<%=infoDto.getSname()%>" type="button" class="btn btn-outline-success">수정하기</a>
 		<%
 			} else {
 		%>
-		<tr>
-			<td colspan="4">데이터가 존재하지 않습니다.</td>
-		</tr>
+		<a href="writeProcess.jsp?shop=<%=infoDto.getSname()%>"
+			class="btn btn-outline-info">평가하기</a>
+		<%
+			}
+		%>
+	</div>
+	<form style="margin-bottom:50px;">
+		<%
+			if (list.size() != 0) {
+		%>
+		<%
+			for (ShopRatingDto ratingDto : list) {
+		%>
+		<div class="form-group">
+			<label for="exampleFormControlTextarea1"><%=ratingDto.getId()%></label>
+			<textarea class="form-control" rows="3" readonly="readonly"> <%=ratingDto.getComm()%></textarea>
+		</div>
+		<%
+			}
+		%>
+		<%
+			} else {
+		%>
+		<div>
+			<h4>리뷰가 존재하지 않습니다.</h4>
+		</div>
 		<%
 			}
 		%>
 
-
-	</thead>
-</table>
-<table class="table table-borderless">
-	<thead>
-		<tr>
-
-		</tr>
-	</thead>
-	<tbody>
-		<%
-			if (totalDto != null) {
-		%>
-		<tr>
-			<th scope="col">mood</th>
-			<td><%=totalDto.getMood()%></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<th scope="col">light</th>
-			<td><%=totalDto.getLight()%></td>
-
-		</tr>
-		<tr>
-			<th scope="col">price</th>
-
-			<td><%=totalDto.getPrice()%></td>
-		</tr>
-		<tr>
-			<th scope="col">taste</th>
-
-			<td><%=totalDto.getTaste()%></td>
-		</tr>
-		<%
-			} else {
-		%>
-		<tr>
-			<td colspan="4">데이터가 존재하지 않습니다.</td>
-		</tr>
-		<%
-			}
-		%>
-	</tbody>
-
-</table>
-<div class="text-right">
-	<a href="index.jsp" type="button" class="btn btn-outline-secondary">메인</a>
-
-	<a href="write.jsp?sname=<%=sname%>" class="btn btn-outline-secondary">글작성</a>
-
-	<a href="update.jsp<%=sname%>" class="btn btn-outline-secondary">내글
-		수정하기</a>
-</div>
-<form>
-	<%
-		if (list.size() != 0) {
-	%>
-	<%
-		for (ShopRatingDto ratingDto : list) {
-	%>
-	<%-- <%if(MemberDto.getId() == comdto.getId()){ %> --%>
-	<div class="form-group" readonly="readonly">
-		<label for="exampleFormControlTextarea1"><%=ratingDto.getId()%></label>
-		<textarea class="form-control" style="width: 1570px;"
-			id="exampleFormControlTextarea1" rows="3" readonly="readonly"> <%=ratingDto.getComm()%></textarea>
-	</div>
-	<%
-		}
-	%>
-	<%
-		} else {
-	%>
-	<tr>
-		<td colspan="3">리뷰가 존재하지 않습니다.</td>
-	</tr>
-	<%
-		}
-	%>
-
-</form>
-
-<div class="text-right">
-	<a href="index.jsp" type="button" class="btn btn-outline-secondary"
-		style="width: 80px;">메인</a> <a href="view.jsp" type="button"
-		class="btn btn-outline-secondary" style="width: 95px;">맨 위로</a>
+	</form>
 
 </div>
 
-
-
-<!-- <div class="card text-center">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
- -->
-<%-- 
 <%@ include file="../inc/footer.jsp"%>
- --%>
 
 

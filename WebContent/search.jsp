@@ -85,11 +85,14 @@
 			<div class="row row-cols-1 row-cols-md-2">
 			<%
 				for (ShopInfoDto infoDto : list) {
+					if(ratingDao.isTable(infoDto.getSname()) == false){
+						ratingDao.create(infoDto.getSname());
+					}
 			%>
 				<div class="col mb-4">
 					<div class="card">
 						<a href="<%=contextPath%>/view.jsp?shop=<%=infoDto.getSname()%>"><img
-							src="#" class="card-img-top" alt="alternative"></a>
+							src="<%=infoDto.getThumb() %>" class="card-img-top" alt="alternative"></a>
 						<div class="card-body">
 							<h5 class="card-title"><%=infoDto.getSname()%></h5>
 							<p class="card-text"></p>
