@@ -8,6 +8,9 @@
 		response.sendRedirect("/cafe/main.jsp");
 		return;
 	}
+	String referer = request.getHeader("referer");
+	if(referer == null)
+		referer = contextPath + "/main.jsp";
 %>
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -39,6 +42,7 @@
 					</div>
 					<div id="passwordMessage"></div>
 				</div>
+				<input type="hidden" name="url" value="<%=referer%>">
 			</form>
 			<div class="text-right">
 				<button type="button" id="loginMember"

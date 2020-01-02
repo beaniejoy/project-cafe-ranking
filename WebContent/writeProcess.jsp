@@ -2,7 +2,7 @@
 <%@page import="dto.MemDto"%>
 <%@ page pageEncoding="utf-8"%>
 
-<%
+<%	
 	request.setCharacterEncoding("utf-8");
 	String contextPath = request.getContextPath();
 	String shopName = request.getParameter("shop");
@@ -12,7 +12,7 @@
 		%>
 		<script>
 			alert("카공도르 회원만 이용할 수 있습니다. 로그인 페이지로 돌아갑니다.");
-			location.href = "<%=contextPath%>/mem/login.jsp?shop=<%=shopName%>";
+			location.href = "<%=contextPath%>/mem/login.jsp";
 		</script>
 		<%
 	} else if(dao.isAlreadyRated(shopName, mDto.getId()) == false){
@@ -21,6 +21,11 @@
 			location.href = "<%=contextPath%>/write.jsp?shop=<%=shopName%>";			
 		</script>
 		<%
+	} else {
+		%>
+		<script>
+			location.href = "<%=contextPath%>/update.jsp?shop=<%=shopName%>";			
+		</script>
+		<%
 	}
-	
 %>

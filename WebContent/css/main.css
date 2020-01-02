@@ -1,15 +1,13 @@
 @charset "utf-8";
-
 body {
 	
 }
 
 .container {
 	min-width: 1000px;
-	margin: 0 auto;
 	min-height: 500px;
 	padding: 0px;
-	margin-top:50px;
+	margin-top:100px;
 }
 
 .title {
@@ -49,5 +47,3 @@ main .description h3 {
 	background-position: center;
 	background-attachment: fixed;
 }
-
-

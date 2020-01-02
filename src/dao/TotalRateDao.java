@@ -163,7 +163,7 @@ public class TotalRateDao {
 		try {
 			con = ConnLocator.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT s.sname, mood, light, price, taste, s.thumb ");
+			sql.append("SELECT s.sname, ROUND(mood, 2), ROUND(light, 2), ROUND(price, 2), ROUND(taste, 2), s.thumb ");
 			sql.append("FROM totalrate t, shopinfo s ");
 			sql.append("WHERE s.sname = t.sname ");
 			sql.append("ORDER BY ");

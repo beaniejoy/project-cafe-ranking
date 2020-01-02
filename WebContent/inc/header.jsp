@@ -44,13 +44,8 @@
 		%>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li
-					class="nav-item <%if (uri.startsWith("/member")) {%>active <%}%>">
-					<a class="nav-link" href="/member/list.jsp">회원관리</a>
-				</li>
-
-				<li class="nav-item <%if (uri.startsWith("/file")) {%> active <%}%>">
-					<a class="nav-link" href="/file/index.jsp">파일업로드</a>
+				<li class="nav-item <%if (uri.startsWith("/apply")) {%> active <%}%>">
+					<a class="nav-link" href="/cafe/app/apply.jsp">신청게시판</a>
 				</li>
 
 			</ul>

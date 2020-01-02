@@ -9,7 +9,7 @@
 	request.setCharacterEncoding("utf-8");
 	int cPage = 0;
 	int start = 0;
-	int len = 5;
+	int len = 6;
 	int totalRows = 0;
 	int totalPage = 0;
 	int startPage = 0;

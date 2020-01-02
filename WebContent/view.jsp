@@ -68,7 +68,7 @@
 		<%
 			if (mdto != null && shopRatingDao.isAlreadyRated(infoDto.getSname(), mdto.getId())) {
 		%>
-		<a href="update.jsp?shop=<%=infoDto.getSname()%>" type="button" class="btn btn-outline-success">수정하기</a>
+		<a href="writeProcess.jsp?shop=<%=infoDto.getSname()%>" type="button" class="btn btn-outline-success">수정하기</a>
 		<%
 			} else {
 		%>

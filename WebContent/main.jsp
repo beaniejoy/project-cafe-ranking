@@ -31,11 +31,12 @@
 								for (int i = 0; i < 5; i++) {
 							%>
 							<div class="card">
-								<img class="card-img-top" id="shop-img<%=i%>">
+								<a id="link<%=i%>"><img class="card-img-top" id="shop-img<%=i%>"></a>
 								<div class="card-body">
 									<h6 class="card-title" id="shop<%=i%>"></h6>
 									<p class="card-text" id="rate-no<%=i%>"></p>
 								</div>
+							
 							</div>
 								<%
 									}
@@ -71,9 +72,11 @@
 							let name = listArray[i].sname;
 							let value = listArray[i][rate];
 							let url = listArray[i].thumb;
+							let linkName = "#link" + i;
 							let imgName = "#shop-img" + i;
 							let shopName = "#shop" + i;
 							let rateId = "#rate-no" + i;
+							$(linkName).attr('href', '/cafe/view.jsp?shop=' + name);
 							$(imgName).attr('src', url);
 							$(shopName).html(name);
 							$(rateId).html(value);
