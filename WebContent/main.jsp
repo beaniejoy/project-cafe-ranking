@@ -70,7 +70,7 @@
 						for (let i = 0; i < listArray.length; i++) {
 							let name = listArray[i].sname;
 							let value = listArray[i][rate];
-							let url = listArray[i].imgurl;
+							let url = listArray[i].thumb;
 							let imgName = "#shop-img" + i;
 							let shopName = "#shop" + i;
 							let rateId = "#rate-no" + i;

@@ -10,19 +10,28 @@
 
 
 <%
-	String sname = request.getParameter("shop");
+	String shopName = request.getParameter("shop");
 
 	ShopRatingDao shopRatingDao = ShopRatingDao.getInstance();
-	ArrayList<ShopRatingDto> list = shopRatingDao.select(sname);
+	ArrayList<ShopRatingDto> list = shopRatingDao.select(shopName);
 
 	ShopInfoDao infoDao = ShopInfoDao.getInstance();
-	ShopInfoDto infoDto = infoDao.select(sname);
+	ShopInfoDto infoDto = infoDao.select(shopName);
 
 	TotalRateDao totalDao = TotalRateDao.getInstance();
-	TotalRateDto totalDto = totalDao.select(sname);
+	TotalRateDto totalDto = null;
+	
+	// view에서 totalrate table에 해당 매장이 없는 경우 대비
+	if (totalDao.isTotalShopName(shopName)) {
+		totalDto = totalDao.select(shopName);
+		
+	} else {
+		// totalrate table에 해당 매장이 없는 경우 모든 점수 0으로 출력
+		totalDto = new TotalRateDto(shopName, 0.0, 0.0, 0.0, 0.0);
+	}
 %>
 
-<div class="jumbotron">
+<div class="jumbotron" id="jumbo" style="background:url('<%=infoDto.getThumb() %>');">
 	<h2 style="margin-bottom: 50px;"><%=infoDto.getSname()%></h2>
 	<p class="lead"></p>
 	<p></p>

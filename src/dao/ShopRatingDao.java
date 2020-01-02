@@ -370,7 +370,7 @@ public class ShopRatingDao {
 				double price = rs.getDouble(++index);
 				double taste = rs.getDouble(++index);
 				
-				dto = new TotalRateDto(shopName, mood, light, price, taste, null);
+				dto = new TotalRateDto(shopName, mood, light, price, taste);
 			}
 			
 		} catch (SQLException e) {

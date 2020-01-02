@@ -43,3 +43,11 @@ main .description h3 {
 	font-size: 20px;
 }
 
+/* view.jsp의 jumbotron 배경 고정*/
+#jumbo{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+

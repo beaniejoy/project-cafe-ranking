@@ -6,22 +6,19 @@ public class TotalRateDto {
 	private double light;
 	private double price;
 	private double taste;
-	private String imgurl;
 
 	public TotalRateDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TotalRateDto(String sname, double mood, double light, double price, double taste,
-			String imgurl) {
+	public TotalRateDto(String sname, double mood, double light, double price, double taste) {
 		super();
 		this.sname = sname;
 		this.mood = mood;
 		this.light = light;
 		this.price = price;
 		this.taste = taste;
-		this.imgurl = imgurl;
 	}
 
 	public String getSname() {
@@ -62,14 +59,6 @@ public class TotalRateDto {
 
 	public void setTaste(double taste) {
 		this.taste = taste;
-	}
-
-	public String getImgurl() {
-		return imgurl;
-	}
-
-	public void setImgurl(String imgurl) {
-		this.imgurl = imgurl;
 	}
 
 }

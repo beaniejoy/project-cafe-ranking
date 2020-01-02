@@ -34,7 +34,7 @@ public class TotalRateDao {
 		try {
 			con = ConnLocator.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT COUNT(sname)");
+			sql.append("SELECT sname ");
 			sql.append("FROM totalrate ");
 			sql.append("WHERE sname= ? ");
 			
@@ -110,7 +110,7 @@ public class TotalRateDao {
 		return isSuccess;
 		
 	}
-	// 나중에 imgurl 저장해야 한다.
+	
 	public boolean insert(TotalRateDto dto, String shopName) {
 		boolean isSuccess = false;
 		
@@ -163,8 +163,9 @@ public class TotalRateDao {
 		try {
 			con = ConnLocator.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT sname, mood, light, price, taste, imgurl ");
-			sql.append("FROM totalrate ");
+			sql.append("SELECT s.sname, mood, light, price, taste, s.thumb ");
+			sql.append("FROM totalrate t, shopinfo s ");
+			sql.append("WHERE s.sname = t.sname ");
 			sql.append("ORDER BY ");
 			sql.append(rate);
 			sql.append(" DESC ");
@@ -186,7 +187,7 @@ public class TotalRateDao {
 				double light = rs.getDouble(++index);
 				double price = rs.getDouble(++index);
 				double taste = rs.getDouble(++index);
-				String url = rs.getString(++index);
+				String thumb = rs.getString(++index);
 
 				item = new JSONObject();
 				item.put("sname", sname);
@@ -194,7 +195,7 @@ public class TotalRateDao {
 				item.put("light", light);
 				item.put("price", price);
 				item.put("taste", taste);
-				item.put("imgurl", url);
+				item.put("thumb", thumb);
 				jsonArray.add(item);
 			}
 			jsonObj.put("items", jsonArray);
@@ -228,7 +229,7 @@ public class TotalRateDao {
 		try {
 			con = ConnLocator.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT sname, mood, light, price, taste, imgurl ");
+			sql.append("SELECT sname, mood, light, price, taste ");
 			sql.append("FROM totalrate ");
 			sql.append("WHERE sname = ? ");
 			
@@ -245,9 +246,8 @@ public class TotalRateDao {
 				double light = rs.getDouble(++index);
 				double price = rs.getDouble(++index);
 				double taste = rs.getDouble(++index);
-				String url = rs.getString(++index);
 				
-				dto = new TotalRateDto(sname, mood, light, price, taste, url);
+				dto = new TotalRateDto(sname, mood, light, price, taste);
 			}
 			
 		} catch (SQLException e) {
