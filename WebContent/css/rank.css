@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+#activeBack {
+	position: relative;
+	z-index: 1;
+}
+
+#activeBack:after {
+	box-shadow: rgba(0, 0, 0, 0.5);
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url('../image/cafe_back2.jpg');
+	top: 0;
+	left: 0;
+	position: absolute;
+	background-size: 100%;
+	background-position: center center;
+	opacity: 0.8 !important;
+	filter: alpha(opacity = 50);
+	z-index: -1;
+	content: "";
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	max-width: 1400px;
+	min-height: 500px;
+	padding: 0px;
+	margin-top: 50px;
+}
+
+.mainShow {
+	text-align: center;
+}
+
+#mainTitle, #showRank, .title h4, .title-rating h4 span{
+	font-family: 'Do Hyeon', sans-serif;
+	color: white;
+}
+#mainTitle {
+	font-size: 50px;
+}
+
+#mainDescription {
+	color: white;
+	font-size: 20px;
+}
+
+#mainSearch {
+	padding: 0px;
+}
+
+#showRank {
+	margin-top: 80px;
+	font-size: 30px;
+}
+
+.form-inline {
+	margin: 0 auto;
+}
+
+.title {
+	text-align: center;
+}
+
+.list-group {
+	margin-top: 20px;
+}
+
+#btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#btns button {
+	width: 100px;
+	margin: 10px 0px;
+}
+
+.content {
+	margin-left: 50px;
+}
+
+.result-content {
+	text-align: center;
+}
+
+.result-content ul li {
+	margin: 10px 10px;
+}
+
+main .description h3 {
+	font-size: 20px;
+}
+
+/* view.jsp의 jumbotron 배경 고정*/
+#jumbo {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}

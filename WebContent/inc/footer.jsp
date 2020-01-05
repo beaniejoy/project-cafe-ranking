@@ -1,14 +1,14 @@
 <%@ page pageEncoding="utf-8"%>
 
 <!-- footer start -->
-<footer class="bg-dark bd-footer "
+<footer class="<%if(!uri.contains("main.jsp")){ %>bg-dark <%}%>bd-footer" 
 	style="color: white; padding: 1em; margin-top: 1em;">
 	<div class="container-fluid text-center">
-		<p>Since 2019-12-13</p>
+		<p>Copyright Group No.1 / 2020 01 06</p>
 	</div>
 </footer>
 <!-- footer end -->
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <%--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

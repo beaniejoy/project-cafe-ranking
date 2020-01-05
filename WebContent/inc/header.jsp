@@ -2,6 +2,11 @@
 <%@ page pageEncoding="utf-8"%>
 
 
+<%
+	// /dept/list.jsp,   /emp/list.jsp ,  /notice/list.jsp    url에 있는 패스만 뽑아줌.
+	String uri = request.getRequestURI();
+	String contextPath = request.getContextPath();
+%>
 <!doctype html>
 <html lang="en">
 
@@ -17,8 +22,9 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" href="/cafe/css/main.css">
-<link rel="stylesheet" href="/cafe/css/write.css">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%=contextPath %>/css/write.css">
+<link rel="stylesheet" href="<%=contextPath %>/css/rank.css">
 <!-- 합쳐지고 최소화된 최신 CSS -->
 
 <title>카공도르</title>
@@ -26,10 +32,10 @@
 
 <body>
 	<!-- navbar start    -->
-
+<div <%if(uri.contains("main.jsp")){ %>id="activeBack"<%}%>>
 	<nav class="navbar navbar-expand-lg navbar-dark"
-		style="background-color: #6F4E37;">
-		<a class="navbar-brand" href="/cafe/main.jsp">카공도르</a>
+		<%if(!uri.contains("main.jsp")){ %>style="background-color: #6F4E37;"<%}%> >
+		<a class="navbar-brand" href="<%=contextPath %>/main.jsp">카공도르</a>
 		<!-- /는 최상위 인덱스 (webcontent를 의미)   -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo02"
@@ -37,15 +43,12 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<%
-			// /dept/list.jsp,   /emp/list.jsp ,  /notice/list.jsp    url에 있는 패스만 뽑아줌.
-			String uri = request.getRequestURI();
-			String contextPath = request.getContextPath();
-		%>
+
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item <%if (uri.startsWith("/apply")) {%> active <%}%>">
-					<a class="nav-link" href="/cafe/app/apply.jsp">신청게시판</a>
+				<li
+					class="nav-item <%if (uri.startsWith("/apply")) {%> active <%}%>">
+					<a class="nav-link" href="<%=contextPath %>/app/apply.jsp">신청게시판</a>
 				</li>
 
 			</ul>
@@ -68,14 +71,19 @@
 						환영합니다.</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=contextPath%>/mem/logout.jsp">로그아웃 </a></li>
-				
+
 				<%
 					}
 				%>
-				<form class="form-inline my-2 my-lg-0" method="post" action="<%=contextPath%>/search.jsp">
-					<input class="form-control mr-sm-2" type="text" placeholder="카페명을 입력해주세요" id = "search" name = "search" aria-label="Search">
+				<%if(!uri.contains("main.jsp")){ %>
+				<form class="form-inline my-2 my-lg-0" method="post"
+					action="<%=contextPath%>/search.jsp">
+					<input class="form-control mr-sm-2" type="text"
+						placeholder="카페명을 입력해주세요" id="search" name="search"
+						aria-label="Search">
 					<button class="btn btn-secondary my-2 my-sm-0" type="submit">카페찾기</button>
 				</form>
+				<%} %>
 			</ul>
 		</div>
 	</nav>

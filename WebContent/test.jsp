@@ -1,35 +1,11 @@
-<%@page import="dao.ShopInfoDao"%>
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="/inc/header.jsp"%>
 
-<%
-	ShopInfoDao infoDao = ShopInfoDao.getInstance();
-	
-%>
-
-
 <div class="container">
-	<div class="mainShow">
-		<div id="mainTitle">카공도르</div>
-		<p id="mainDescription">현재 등록되어 있는 <%=infoDao.getTotalRows() %>개의 매장에 대해서 개인의 경험을 바탕으로 평가해보세요.</p>
-		<nav class="navbar navbar-light" id="mainSearch">
-			<form class="form-inline" method="post"
-				action="<%=contextPath%>/search.jsp">
-				<input class="form-control mr-sm-2" type="text"
-					placeholder="카페명을 입력해주세요" id="search" name="search"
-					aria-label="Search">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">카페찾기</button>
-			</form>
-		</nav>
-		
-		<button type="button" class="btn btn-warning" id="showRank">카페 Rank 보기</button>
-	</div>
-
-
-	<div class="row" style="display: none">
+	<div class="row">
 		<div class="col-2" style="padding: 0px;">
 			<div class="title">
-				<h4 style="font-size:40px;">Cafe Rank</h4>
+				<h4>Cafe Ranking</h4>
 				<div class="list-group">
 					<button type="button"
 						class="list-group-item list-group-item-action" id="mood">분위기</button>
@@ -54,9 +30,31 @@
 		</div>
 		<div class="col-10" style="padding: 0px;">
 			<div class="content">
+				<div class="carousel slide title-description" id="carouselExampleInterval" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active" data-interval="10000">
+							<img src="..." class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item" data-interval="2000">
+							<img src="..." class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="..." class="d-block w-100" alt="...">
+						</div>
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleInterval"
+						role="button" data-slide="prev"> <span
+						class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+						class="sr-only">Previous</span>
+					</a> <a class="carousel-control-next" href="#carouselExampleInterval"
+						role="button" data-slide="next"> <span
+						class="carousel-control-next-icon" aria-hidden="true"></span> <span
+						class="sr-only">Next</span>
+					</a>
+				</div>
 				<div class="title-rating" style="display: none;">
 					<h4>
-						<span>Rate  </span><span id="subtitle" style="font-size:40px;"></span>
+						<span>Rate - </span><span id="subtitle"></span>
 					</h4>
 
 					<div class="result-content">
@@ -64,7 +62,7 @@
 							<%
 								for (int i = 0; i < 5; i++) {
 							%>
-							<div class="card">
+							<div class="card" style="width: 200px;">
 								<a id="link<%=i%>"><img class="card-img-top"
 									id="shop-img<%=i%>"></a>
 								<div class="card-body">
@@ -84,7 +82,6 @@
 			</div>
 		</div>
 	</div>
-
 </div>
 <%@ include file="../inc/footer.jsp"%>
 
@@ -148,11 +145,5 @@
 			ajax_button("taste");
 			$("#taste").addClass("active");
 		});
-		
-		$("#showRank").click(function(){
-			$(".mainShow").hide();
-			$(".row").show();
-			
-		})
 	});
 </script>
