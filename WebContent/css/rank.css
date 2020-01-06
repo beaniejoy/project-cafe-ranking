@@ -1,8 +1,14 @@
 @charset "utf-8";
 
+body, html{
+	margin: 0;
+    padding: 0;
+    height: 100%;
+}
 #activeBack {
 	position: relative;
 	z-index: 1;
+	min-height:100%;
 }
 
 #activeBack:after {
@@ -12,8 +18,10 @@
 	top: 0;
 	left: 0;
 	position: absolute;
-	background-size: 100%;
-	background-position: center center;
+	background-size: cover;
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	opacity: 0.8 !important;
 	filter: alpha(opacity = 50);
 	z-index: -1;
@@ -26,14 +34,15 @@
 	max-width: 1400px;
 	min-height: 500px;
 	padding: 0px;
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 .mainShow {
 	text-align: center;
 }
 
-#mainTitle, #showRank, .title h4, .title-rating h4 span{
+#mainTitle, #showRank, .title h4, .title-rating h4 span,
+#jumbo h2{
 	font-family: 'Do Hyeon', sans-serif;
 	color: white;
 }
@@ -97,6 +106,8 @@ main .description h3 {
 /* view.jsp의 jumbotron 배경 고정*/
 #jumbo {
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: center bottom;
 	background-attachment: fixed;
+	background-size: cover;
+	width: 
 }

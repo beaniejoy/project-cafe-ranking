@@ -24,6 +24,46 @@ public class ShopRatingDao {
 		return single;
 	}
 	
+	public int getTotalRows(String shopName) {
+		int rows = 0;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ConnLocator.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT COUNT(id) FROM ");
+			sql.append(shopName);
+
+			pstmt = con.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+
+			int index = 0;
+			while (rs.next()) {
+				rows = rs.getInt(++index);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return rows;
+	}
+	
 	public boolean isTable(String shopName) {
 		boolean isSuccess = false;
 		
@@ -202,7 +242,7 @@ public class ShopRatingDao {
 		return dto;
 	}
 	
-	public ArrayList<ShopRatingDto> select(String shopName){
+	public ArrayList<ShopRatingDto> select(int start, int len, String shopName){
 		ArrayList<ShopRatingDto> list = new ArrayList<ShopRatingDto>();
 		
 		Connection con = null;
@@ -214,11 +254,13 @@ public class ShopRatingDao {
 			sql.append("SELECT id, mood, light, price, taste, comm ");
 			sql.append("FROM ");
 			sql.append(shopName);
+			sql.append(" LIMIT ?, ?");
 			
 			
 			pstmt = con.prepareStatement(sql.toString());
-			
 			int index = 0;
+			pstmt.setInt(++index, start);
+			pstmt.setInt(++index, len);
 			
 			rs = pstmt.executeQuery();
 			
