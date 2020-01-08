@@ -25,6 +25,7 @@
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<%=contextPath %>/css/write.css">
 <link rel="stylesheet" href="<%=contextPath %>/css/rank.css">
+<link rel="stylesheet" href="<%=contextPath %>/css/animate.css">
 <!-- 합쳐지고 최소화된 최신 CSS -->
 
 <title>카공도르</title>

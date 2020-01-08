@@ -135,47 +135,4 @@
 	<%-- Comment end --%>
 </div>
 
-
-
 <%@ include file="../inc/footer.jsp"%>
-
-<script>
-
-$(function(){
-	
-})
-<%--
-const ajax_button = function(category) {
-	$
-			.ajax({
-				type : 'GET',
-				url : '/cafe/main/main_total_ajax.jsp?index='
-						+ category + '&start=0&length=5',
-				dataType : 'json',
-				error : function() {
-					alert('error');
-				},
-				success : function(obj) {
-					console.log(obj);
-					const listArray = obj.items;
-					let rate = category;
-					for (let i = 0; i < listArray.length; i++) {
-						let name = listArray[i].sname;
-						let value = listArray[i][rate];
-						let url = listArray[i].thumb;
-						let linkName = "#link" + i;
-						let imgName = "#shop-img" + i;
-						let shopName = "#shop" + i;
-						let rateId = "#rate-no" + i;
-						$(linkName).attr('href',
-								'/cafe/view.jsp?shop=' + name);
-						$(imgName).attr('src', url);
-						$(shopName).html(name);
-						$(rateId).html(value);
-					}
-				}
-			});
-}
---%>
-</script>
-

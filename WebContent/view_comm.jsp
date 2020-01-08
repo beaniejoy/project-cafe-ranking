@@ -1,10 +1,6 @@
 <%@page import="dto.ShopRatingDto"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="dto.TotalRateDto"%>
-<%@page import="dao.TotalRateDao"%>
-<%@page import="dto.ShopInfoDto"%>
-<%@page import="dao.ShopInfoDao"%>
 <%@page import="dao.ShopRatingDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%
@@ -33,25 +29,9 @@
 	} catch (NumberFormatException e) {
 		cPage = 1;
 	}
-	
 	String shopName = request.getParameter("shop");
 
 	ShopRatingDao shopRatingDao = ShopRatingDao.getInstance();
-
-	ShopInfoDao infoDao = ShopInfoDao.getInstance();
-	ShopInfoDto infoDto = infoDao.select(shopName);
-
-	TotalRateDao totalDao = TotalRateDao.getInstance();
-	TotalRateDto totalDto = null;
-
-	// view에서 totalrate table에 해당 매장이 없는 경우 대비
-	if (totalDao.isTotalShopName(shopName)) {
-		totalDto = totalDao.select(shopName);
-
-	} else {
-		// totalrate table에 해당 매장이 없는 경우 모든 점수 0으로 출력
-		totalDto = new TotalRateDto(shopName, 0.0, 0.0, 0.0, 0.0);
-	}
 
 	// 총 데이터수 구하기
 	totalRows = shopRatingDao.getTotalRows(shopName);

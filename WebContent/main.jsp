@@ -26,7 +26,7 @@
 	</div>
 
 
-	<div class="row" style="display: none">
+	<div class="row" id="main_row" style="display: none">
 		<div class="col-2" style="padding: 0px;">
 			<div class="title">
 				<h4 style="font-size:40px;">Cafe Rank</h4>
@@ -142,8 +142,9 @@
 		
 		$("#showRank").click(function(){
 			$(".mainShow").hide();
+			$(".row").css({"animation-duration": "3s", "antimation-name": "fadeInUp"});
 			$(".row").show();
-			
+			$("#activeBack").attr("style", "background:none");
 		})
 	});
 </script>
