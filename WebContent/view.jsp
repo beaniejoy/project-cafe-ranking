@@ -128,76 +128,54 @@
 			}
 		%>
 	</div>
-	<form style="margin-bottom: 50px;">
-		<%
-			if (list.size() != 0) {
-		%>
-		<%
-			for (ShopRatingDto ratingDto : list) {
-		%>
-		<div class="form-group">
-			<label for="exampleFormControlTextarea1"><%=ratingDto.getId()%></label>
-			<textarea class="form-control" rows="3" readonly="readonly"> <%=ratingDto.getComm()%></textarea>
-		</div>
-		<%
-			}
-		%>
-		<%
-			} else {
-		%>
-		<div>
-			<h4>리뷰가 존재하지 않습니다.</h4>
-		</div>
-		<%
-			}
-		%>
-
-	</form>
-
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<%
-				if (currentBlock == 1) {
-			%>
-			<li class="page-item disabled"><a class="page-link" href="#"
-				tabindex="-1" aria-disabled="true">Previous </a></li>
-			<%
-				} else {
-			%>
-			<li class="page-item"><a class="page-link"
-				href="list.jsp?page=<%=startPage - 1%>">Previous</a></li>
-			<%
-				}
-			%>
-			<%
-				for (int i = startPage; i <= endPage; i++) {
-			%>
-			<li class="page-item <%if (cPage == i) {%>active<%}%>"><a
-				class="page-link" href="list.jsp?page=<%=i%>"><%=i%></a></li>
-			<%
-				}
-			%>
-			<%
-				if (currentBlock == totalBlock) {
-			%>
-			<li class="page-item disabled"><a class="page-link" href="#"
-				tabindex="-1" aria-disabled="true">Next</a></li>
-			<%
-				} else {
-			%>
-			<li class="page-item"><a class="page-link"
-				href="list.jsp?page=<%=endPage + 1%>">Next</a></li>
-			<%
-				}
-			%>
-		</ul>
-	</nav>
-
+	
+	<%-- Comment start --%>
+	<iframe src="<%=contextPath%>/view_comm.jsp?shop=<%=shopName%>" 
+	width="100%" height="<%=120*list.size() + 200%>" frameborder="0"></iframe>
+	<%-- Comment end --%>
 </div>
+
+
 
 <%@ include file="../inc/footer.jsp"%>
 
 <script>
+
+$(function(){
 	
+})
+<%--
+const ajax_button = function(category) {
+	$
+			.ajax({
+				type : 'GET',
+				url : '/cafe/main/main_total_ajax.jsp?index='
+						+ category + '&start=0&length=5',
+				dataType : 'json',
+				error : function() {
+					alert('error');
+				},
+				success : function(obj) {
+					console.log(obj);
+					const listArray = obj.items;
+					let rate = category;
+					for (let i = 0; i < listArray.length; i++) {
+						let name = listArray[i].sname;
+						let value = listArray[i][rate];
+						let url = listArray[i].thumb;
+						let linkName = "#link" + i;
+						let imgName = "#shop-img" + i;
+						let shopName = "#shop" + i;
+						let rateId = "#rate-no" + i;
+						$(linkName).attr('href',
+								'/cafe/view.jsp?shop=' + name);
+						$(imgName).attr('src', url);
+						$(shopName).html(name);
+						$(rateId).html(value);
+					}
+				}
+			});
+}
+--%>
 </script>
 

@@ -40,16 +40,7 @@
 					<button type="button"
 						class="list-group-item list-group-item-action" id="taste">맛</button>
 				</div>
-				<%-- 
-				<div class="navigation">
-					<div class="text-left" id="btns">
-						<button type="button" id="mood" class="btn btn-outline-success">분위기</button>
-						<button type="button" id="light" class="btn btn-outline-success">조명</button>
-						<button type="button" id="price" class="btn btn-outline-success">가격</button>
-						<button type="button" id="taste" class="btn btn-outline-success">맛</button>
-					</div>
-				</div>
-				--%>
+				
 			</div>
 		</div>
 		<div class="col-10" style="padding: 0px;">
