@@ -174,8 +174,8 @@
 			</form>
 			<br>
 			<div class='text-right'>
-				<a href='list.jsp?page=<%=cPage%>' type="button"
-					class="btn btn-secondary btn-md">취소</a>
+				<button type="button"
+					class="btn btn-secondary btn-md" id="cancel">취소</button>
 				<button type="button" id='saveCafe' class="btn btn-primary btn-md">등록</button>
 			</div>
 
@@ -196,6 +196,11 @@
 			$(this).addClass('on').prevAll('span').addClass('on');
 			return false;
 		});
+		
+		$("#cancel").click(function(){
+			history.back(-2);
+		});
+		
 		$("#saveCafe").click(function() {
 			f.action = "saveRating.jsp"
 			f.submit();

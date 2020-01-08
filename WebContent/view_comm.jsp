@@ -129,7 +129,7 @@
 				} else {
 			%>
 			<li class="page-item"><a class="page-link"
-				href="view_comm.jsp?page=<%=startPage - 1%>">Previous</a></li>
+				href="view_comm.jsp?shop=<%=shopName %>&page=<%=startPage - 1%>">Previous</a></li>
 			<%
 				}
 			%>
@@ -137,7 +137,7 @@
 				for (int i = startPage; i <= endPage; i++) {
 			%>
 			<li class="page-item <%if (cPage == i) {%>active<%}%>"><a
-				class="page-link" href="view_comm.jsp?page=<%=i%>"><%=i%></a></li>
+				class="page-link" href="view_comm.jsp?shop=<%=shopName %>&page=<%=i%>"><%=i%></a></li>
 			<%
 				}
 			%>
@@ -150,7 +150,7 @@
 				} else {
 			%>
 			<li class="page-item"><a class="page-link"
-				href="view_comm.jsp?page=<%=endPage + 1%>">Next</a></li>
+				href="view_comm.jsp?shop=<%=shopName %>&page=<%=endPage + 1%>">Next</a></li>
 			<%
 				}
 			%>

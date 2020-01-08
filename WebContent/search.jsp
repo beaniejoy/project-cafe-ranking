@@ -79,10 +79,10 @@
 
 <!-- main start -->
 <div class="container">
-	<div class="row">
+	<div class="row" id="search_row">
 		<div class="col-lg-12">
 			<h3>카페 리스트</h3>
-			<div class="row row-cols-1 row-cols-md-2">
+			<div class="row row-cols-1 row-cols-md-3">
 			<%
 				for (ShopInfoDto infoDto : list) {
 					if(ratingDao.isTable(infoDto.getSname()) == false){

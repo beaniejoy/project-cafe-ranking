@@ -191,8 +191,8 @@
 			</form>
 			<br>
 			<div class='text-right'>
-				<a href='<%=contextPath %>/search.jsp?page=<%=cPage%>' type="button"
-					class="btn btn-secondary btn-md">취소</a>
+				<button type="button"
+					class="btn btn-secondary btn-md" id="cancel">취소</button>
 				<button type="button" id='updateCafe' class="btn btn-primary btn-md">등록</button>
 			</div>
 
@@ -213,6 +213,11 @@
 			$(this).addClass('on').prevAll('span').addClass('on');
 			return false;
 		});
+		
+		$("#cancel").click(function(){
+			history.back(-2);
+		});
+		
 		$("#updateCafe").click(function() {
 			f.action = "updateRating.jsp"
 			f.submit();
