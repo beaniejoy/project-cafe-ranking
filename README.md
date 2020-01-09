@@ -1,9 +1,35 @@
-## Project cafe ranking
+# Project cafe ranking
 
-html, css, javascript(jQuery), jsp
+jsp와 mariadb를 이용한 web서비스 구현 실습을 위한 미니 프로젝트입니다.  
+(html, css, javascript(jQuery), jsp(java / JDBC), mariaDB)
+
+  
+## Collaborators
+
+
+## 
 
 
 
+## Usage
+
+```python
+import foobar
+
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+
+  
 login.jsp :
 
 <%
