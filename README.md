@@ -1,9 +1,25 @@
-## Project cafe ranking
+# Project cafe ranking
 
-html, css, javascript(jQuery), jsp
+jsp와 mariadb를 이용한 web서비스 구현 실습을 위한 미니 프로젝트입니다.  
+html, css, javascript(jQuery), jsp(java / JDBC), mariaDB
+
+  
+## Collaborators
+
+
+## Content
+
+main, search write, update, view, apply
+
+
+## Database, Tables
+
+shopinfo, each_shop_rating, totalrate, apply, member, 
 
 
 
+***
+  
 login.jsp :
 
 <%
