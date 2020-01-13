@@ -3,7 +3,7 @@
 jsp와 mariadb를 이용한 web서비스 구현 실습을 위한 미니 프로젝트입니다.  
 (2019/12/24 ~ 2019/01/05)
 
-### Concept
+### - Concept
 카페에서 공부하거나 작업하는 사람들(일명 카공족)이 많아지면서 카페가 우후죽순 많아진 것은 사실입니다. 그래서 jsp 실습겸 공부를 하기 좋은 카페인지 아닌지 평가하고 그 결과를 점수화해서 main page에 보여주는 웹페이지를 만들어 보았습니다.
 
 ## Collaborators
@@ -99,13 +99,73 @@ write page에서 사용자가 평가를 다 수행하고 완료를 하면 해당
 ![image](https://user-images.githubusercontent.com/41675375/72217965-7e53f300-3578-11ea-9922-550407d6e225.png)
 
 **1) shopinfo**  
-  
-**2) each_shop_rating** 
+```sql
+CREATE TABLE shopinfo (
+	sname` VARCHAR(40) NOT NULL,
+	opertime` VARCHAR(30) NULL DEFAULT NULL,
+	loc` VARCHAR(70) NULL DEFAULT NULL,
+	phone` VARCHAR(15) NULL DEFAULT NULL,
+	menu` VARCHAR(300) NULL DEFAULT NULL,
+	thumb` VARCHAR(200) NULL DEFAULT NULL,
+	PRIMARY KEY (`sname`)
+)
+```
 
-**3)totalrate**  
+**2) each_shop_rating** 
+```sql
+CREATE TABLE shopName (
+	id VARCHAR(20) NOT NULL,
+	mood DOUBLE NOT NULL,
+	light DOUBLE NOT NULL,
+	price DOUBLE NOT NULL,
+	taste DOUBLE NOT NULL,
+	comm VARCHAR(300) NOT NULL,
+	PRIMARY KEY (id)
+)
+```
+
+**3) totalrate**  
+```sql
+CREATE TABLE totalrate (
+	sname VARCHAR(40) NOT NULL,
+	mood DOUBLE NOT NULL,
+	light DOUBLE NOT NULL,
+	price DOUBLE NOT NULL,
+	taste DOUBLE NOT NULL,
+	INDEX sname (sname),
+	CONSTRAINT sname FOREIGN KEY (sname) REFERENCES shopinfo (sname)
+)
+```
 
 **4) apply**  
+```sql
+CREATE TABLE apply (
+	no INT(11) NOT NULL,
+	id VARCHAR(20) NOT NULL,
+	cmm VARCHAR(300) NOT NULL,
+	thmup INT(11) NOT NULL,
+	PRIMARY KEY (no)
+)
+```
 
 **5) member**  
+```sql
+CREATE TABLE member (
+	id VARCHAR(20) NOT NULL,
+	pwd VARCHAR(41) NOT NULL,
+	phone VARCHAR(15) NOT NULL,
+	loc VARCHAR(50) NOT NULL,
+	PRIMARY KEY (id)
+)
+```
+  
+## Improvements
+  
+- **each_shop_rating table의 comm 컬럼을 따로 분리해 Comment table로**  
+지금 구현 상태로는 개별 카페의 Comment를 평가 한 번에 1개 밖에 할 수가 없습니다. Comment를 따로 table화 시켜서 member table과 연동해 각 카페 매장에 대해 여러 Comment를 남길 수 있게 해야합니다.
+  
+- **shopName parameter를 한글에서 영어로 keyword change**  
+웹페이지를 이동할 때 마다 사용자가 조회하는 매장의 정보를 DB에서 불러오기 위해 parameter로 shopName(매장 이름)을 전달했습니다. 하지만 url에 한글이 포함된다는 점과 띄어쓰기를 \_(under bar)로 구분지어야 한다는 점에서 이를 바꿀 필요가 있습니다. 각 매장이름을 keyword화 시켜서 table에 shopinfo에 칼럼으로 추가를 하는 방법과 따로 cafe keyword를 저장한 table을 만들어 foreign key로 join해 조회하는 방법이 있습니다.
+
 
 
