@@ -172,5 +172,12 @@ CREATE TABLE member (
 - **shopName parameter를 한글에서 영어로 keyword change**  
 웹페이지를 이동할 때 마다 사용자가 조회하는 매장의 정보를 DB에서 불러오기 위해 parameter로 shopName(매장 이름)을 전달했습니다. 하지만 url에 한글이 포함된다는 점과 띄어쓰기를 \_(under bar)로 구분지어야 한다는 점에서 이를 바꿀 필요가 있습니다. 각 매장이름을 keyword화 시켜서 table에 shopinfo에 칼럼으로 추가를 하는 방법과 따로 cafe keyword를 저장한 table을 만들어 foreign key로 join해 조회하는 방법이 있습니다.
 
+- **Spring Boot를 이용한 프로젝트 개발**  
+Spring Framework 통해 이 프로젝트를 Boot 기반 웹 프로젝트로 수정할 계획입니다.
+
+- **AWS를 통해 서버 올리기**  
+AWS EC2를 통해 웹서버를 올릴 계획이 있습니다.
+
+
 
 
