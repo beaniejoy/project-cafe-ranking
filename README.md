@@ -178,6 +178,10 @@ Spring Framework 통해 이 프로젝트를 Boot 기반 웹 프로젝트로 수�
 - **AWS를 통해 서버 올리기**  
 AWS EC2를 통해 웹서버를 올릴 계획이 있습니다.
 
+## Update
+
+[Spring Boot 기반 Cafe Ranking Project Repository](https://github.com/hanbinleejoy/cagong-ranking-project)
+
 
 
 
