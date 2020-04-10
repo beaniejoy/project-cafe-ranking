@@ -3,7 +3,7 @@
 jsp와 mariadb를 이용한 web서비스 구현 실습을 위한 미니 프로젝트입니다.  
 (2019/12/24 ~ 2019/01/05)
 
-[(Spring Boot 기반 Cafe Ranking Project Repository)](https://github.com/hanbinleejoy/cagong-ranking-project)
+[(Spring Boot 기반 Cafe Ranking Project Repository)](https://github.com/hanbinleejoy/cagong-ranking-project) - 진행중
 
 ### ▶ Concept
 카페에서 공부하거나 작업하는 사람들(일명 카공족)이 많아지면서 카페가 우후죽순 많아진 것은 사실입니다. 그래서 jsp 실습겸 공부를 하기 좋은 카페인지 아닌지 평가하고 그 결과를 점수화해서 main page에 보여주는 웹페이지를 만들어 보았습니다.
